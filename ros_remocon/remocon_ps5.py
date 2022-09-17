@@ -23,7 +23,7 @@ class RemoconPS5(Node):
 
         self.cmd_vel_pub_ = self.create_publisher(
             Twist,
-            '/cmd_vel',
+            '/cmd_vel_joy',
             10)
 
         self.joy_sub_ = self.create_subscription(
