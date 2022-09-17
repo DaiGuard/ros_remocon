@@ -47,8 +47,19 @@ class RemoconPS5(Node):
         
         cmd_vel = Twist()
 
+        if msg.buttons[4]:
+            if self.high_or_slow:
+                self.high_or_slow = False
+            else:
+                self.high_or_slow = True
+
+
         trans_vel = - self.max_trans * msg.axes[1]
         rot_vel = - self.max_rot * msg.axes[0]
+
+        if self.high_or_slow:
+            trans_vel = 0.5 * trans_vel
+            rot_vel = 0.5 * rot_vel
 
         cmd_vel.linear.x = trans_vel
         cmd_vel.angular.z = rot_vel
