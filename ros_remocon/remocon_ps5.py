@@ -32,6 +32,8 @@ class RemoconPS5(Node):
             self.joy_callback,
             10)
 
+        self.high_or_slow = False
+
     def parameters_callback(self, params):
         for param in params:
             if param.name == 'max_trans':
